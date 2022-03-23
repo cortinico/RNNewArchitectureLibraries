@@ -123,7 +123,7 @@ Pod::Spec.new do |s|
 end
 ```
 
-### [[Native Module] Test The Native Module]()
+### <a name="test-old-architecture">[[Native Module] Test The Native Module]()</a>
 
 1. At the same level of example-library run `npx react-native init OldArchitecture`
 1. `cd OldArchitecture && yarn add ../example-library`
@@ -253,4 +253,20 @@ end
         return std::make_shared<facebook::react::NativeCalculatorSpecJSI>(params);
     }
     #endif
+    ```
+### [[TurboModule] Unify JavaScript interface]()
+
+1. Open the `src/index.js` file
+1. Replace the code with the following:
+    ```ts
+    // @flow
+    import { NativeModules } from 'react-native'
+
+    const isTurboModuleEnabled = global.__turboModuleProxy != null;
+
+    const calculator = isTurboModuleEnabled ?
+    require("./NativeCalculator").default :
+    NativeModules.Calculator;
+
+    export default calculator;
     ```
