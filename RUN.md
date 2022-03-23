@@ -4,7 +4,7 @@ This doc contains the logs of the steps done to achieve the final result.
 
 ## Steps
 
-### [[Setup] Create the example-component folder and the package.json]()
+### [[Setup] Create the example-component folder and the package.json](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/5f0adac9c62415faf9a653b0949c108f33c1560f)
 
 1. `mkdir example-library`
 1. `touch example-library/package.json`
@@ -43,7 +43,7 @@ This doc contains the logs of the steps done to achieve the final result.
 }
 ```
 
-### [[Native Component] Create the JS import]()
+### [[Native Component] Create the JS import](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/6b695fedc806da3e0c4876470db83894a7e42a95)
 
 1. `mkdir example-component/src`
 1. `touch example-component/src/index.js`
@@ -56,7 +56,7 @@ import { requireNativeComponent } from 'react-native'
 export default requireNativeComponent("ColoredView")
 ```
 
-### [[Native Component] Create the iOS implementation]()
+### [[Native Component] Create the iOS implementation](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/95a2e6ea6d34b7b72450c55d07329cdf9c1b5a0d)
 
 1. `mkdir example-component/ios`
 1. Open Xcode
@@ -135,7 +135,7 @@ Pod::Spec.new do |s|
 end
 ```
 
-### <a name="test-old-architecture" />[[Native Component] Test The Native Component]()
+### <a name="test-old-architecture" />[[Native Component] Test The Native Component](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/b5cf16e1f5ced8d46af670f269bd434ea22236e5)
 
 1. At the same level of example-library run `npx react-native init OldArchitecture`
 1. `cd OldArchitecture && yarn add ../example-library`
@@ -179,7 +179,7 @@ end
 
 **Note:** OldArchitecture app has not been committed not to pollute the repository.
 
-### [[Fabric Component] Add the JavaScript specs]()
+### [[Fabric Component] Add the JavaScript specs](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/1dac1a92b68b8bb7143655321e5418c67bce624c)
 
 1. `touch example-component/src/ColoredViewNativeComponent.js`
 1. Paste the following code:
@@ -200,7 +200,7 @@ end
     ): HostComponent<NativeProps>);
     ```
 
-### [[Fabric Component] Set up CodeGen]()
+### [[Fabric Component] Set up CodeGen](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/ec1983b965b77d68fee44a9c07f90d49e316dc2d)
 
 1. Open the `example-component/package.json`
 1. Add the following snippet at the end of it:
@@ -217,7 +217,7 @@ end
     }
     ```
 
-### [[Fabric Component] Set up `podspec` file]()
+### [[Fabric Component] Set up `podspec` file](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/3106bfaec8a0a899d7b10ac431532bbda17b1ded)
 
 1. Open the `example-component/example-component.podspec` file
 1. Before the `Pod::Spec.new do |s|` add the following code:
@@ -245,7 +245,7 @@ end
     end
     ```
 
-### [[Fabric Component] Update the Native iOS code]()
+### [[Fabric Component] Update the Native iOS code](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/53c76b2d3c6b303f9c54793777e027f2873b9273)
 
 1. In the `example-component/ios/RNColoredView` folder, rename the `RNColoredView.m` into `RNColoredViewManager.mm`
 1. Create a new header and call it `RNColoredView.h`
@@ -348,7 +348,7 @@ end
     #endif
     ```
 
-### [[Fabric Component] Unify JavaScript interface]()
+### [[Fabric Component] Unify JavaScript interface](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/1bb3c9743a42317811daa4d40648474e87955f07)
 
 1. Open the `src/index.js` file
 1. Replace the code with the following:
@@ -366,7 +366,7 @@ end
     export default coloredView;
     ```
 
-### [[Fabric Component] Test the Fabric Component]()
+### [[Fabric Component] Test the Fabric Component](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/e9010d1c5ad1ad416b7b00634865699d70dcfe7a)
 
 1. At the same level of example-library run `npx react-native init NewArchitecture --version next` (`next` takes the next version that is about to be released. Any version >= 0.68 should work)
 1. `cd NewArchitecture && yarn add ../example-component`
