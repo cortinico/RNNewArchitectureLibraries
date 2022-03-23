@@ -1,10 +1,10 @@
-# RUN
+# Run
 
 This doc contains the logs of the steps done to achieve the final result.
 
 ## Steps
 
-### [[Setup] Create the example-library folder and the package.json]()
+### [[Setup] Create the example-library folder and the package.json](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/0f64d565f214c2848b475e743834da5751abc8e0)
 
 1. `mkdir example-library`
 1. `touch example-library/package.json`
@@ -43,7 +43,8 @@ This doc contains the logs of the steps done to achieve the final result.
 }
 ```
 
-### [[Native Module] Create the JS import]()
+### [[Native Module] Create the JS import](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/952ea481f17733037278e2367270fd238097b9d9)
+
 
 1. `mkdir example-library/src`
 1. `touch example-library/src/index.js`
@@ -55,7 +56,7 @@ import { NativeModules } from 'react-native'
 export default NativeModules.Calculator;
 ```
 
-### [[Native Module] Create the iOS implementation]()
+### [[Native Module] Create the iOS implementation](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/b2d189c362aeff4dddf36010639ca076969ca831)
 
 1. `mkdir example-library/ios`
 1. Open Xcode
@@ -123,7 +124,7 @@ Pod::Spec.new do |s|
 end
 ```
 
-### <a name="test-old-architecture">[[Native Module] Test The Native Module]()</a>
+### <a name="test-old-architecture" />[[Native Module] Test The Native Module](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/3b79ee7639d54f108e33fc8c17dd62d842eba0c9)
 
 1. At the same level of example-library run `npx react-native init OldArchitecture`
 1. `cd OldArchitecture && yarn add ../example-library`
@@ -172,7 +173,7 @@ end
 
 **Note:** OldArchitecture app has not been committed not to pollute the repository.
 
-### [[TurboModule] Add the JavaScript specs]()
+### [[TurboModule] Add the JavaScript specs](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/54aedba81461301f4e2bc602ebc8df78e0df2639)
 
 1. `touch example-library/src/NativeCalculator.js`
 1. Paste the following code:
@@ -190,7 +191,7 @@ end
     ): ?Spec);
     ```
 
-### [[TurboModule] Set up CodeGen]()
+### [[TurboModule] Set up CodeGen](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/553984008f10a461e7cf051221e145b310809e8c)
 
 1. Open the `example-library/package.json`
 1. Add the following snippet at the end of it:
@@ -207,7 +208,7 @@ end
     }
     ```
 
-### [[TurboModule] Set up `podspec` file]()
+### [[TurboModule] Set up `podspec` file](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/72201a362cffea5c77a1eb322e3f9f202cfcb83c)
 
 1. Open the `example-library/example-library.podspec` file
 1. Before the `Pod::Spec.new do |s|` add the following code:
@@ -233,7 +234,7 @@ end
     end
     ```
 
-### [[TurboModule] Update the Native iOS code]()
+### [[TurboModule] Update the Native iOS code](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/be974636395e4459f61f650152ce33b0312759ab)
 
 1. In the `ios/RNCalculator` folder, rename the `RNCalculator.m` into `RNCalculator.mm`
 1. Open it and add the following `import`:
@@ -254,7 +255,7 @@ end
     }
     #endif
     ```
-### [[TurboModule] Unify JavaScript interface]()
+### [[TurboModule] Unify JavaScript interface](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/842cd89827f876994f293279282655a653545856)
 
 1. Open the `src/index.js` file
 1. Replace the code with the following:
@@ -271,7 +272,7 @@ end
     export default calculator;
     ```
 
-### [[TurboModule] Test the Turbomodule]()
+### [[TurboModule] Test the Turbomodule](https://github.com/cipolleschi/RNNewArchitectureLibraries/commit/7c243206fba6ea1a55ffd03478a7f075bd15429d)
 
 1. At the same level of example-library run `npx react-native init NewArchitecture --version next` (`next` takes the next version that is about to be released. Any version >= 0.68 should work)
 1. `cd NewArchitecture && yarn add ../example-library`
