@@ -122,3 +122,52 @@ Pod::Spec.new do |s|
   s.dependency "React-Core"
 end
 ```
+
+### [[Native Module] Test The Native Module]()
+
+1. At the same level of example-library run `npx react-native init OldArchitecture`
+1. `cd OldArchitecture && yarn add ../example-library`
+1. `cd ios && pod install && cd ..`
+1. `npx react-native start` (In another terminal, to run Metro)
+1. `npx react-native run-ios`
+1. Open `OldArchitecture/App.js` file and replace the content with:
+    ```js
+    /**
+     * Sample React Native App
+     * https://github.com/facebook/react-native
+     *
+     * @format
+     * @flow strict-local
+     */
+
+    import React from 'react';
+    import {useState} from "react";
+    import type {Node} from 'react';
+    import {
+    SafeAreaView,
+    StatusBar,
+    Text,
+    Button,
+    } from 'react-native';
+
+    import Calculator from 'example-library/src/index'
+
+    const App: () => Node = () => {
+    const [currentResult, setResult] = useState<number | null>(null);
+    return (
+        <SafeAreaView>
+        <StatusBar barStyle={'dark-content'}/>
+        <Text style={{marginLeft:20, marginTop:20}}>3+7={currentResult ?? "??"}</Text>
+        <Button title="Compute" onPress={async () => {
+            const result = await Calculator.add(3, 7);
+            setResult(result);
+        }} />
+        </SafeAreaView>
+    );
+    };
+
+    export default App;
+    ```
+1. Click on the `Compute` button and see the app working
+
+**Note:** OldArchitecture app has not been committed not to pollute the repository.
